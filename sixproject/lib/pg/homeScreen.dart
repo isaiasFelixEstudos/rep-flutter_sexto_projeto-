@@ -81,8 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     errorStyle: TextStyle(
                         color: _formValido ? Colors.blue : Colors.red),
                     errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: _formValido ? Colors.blue : Colors.red)),
+                      borderSide: BorderSide(
+                          color: _formValido ? Colors.blue : Colors.red),
+                    ),
                     labelText: "Email",
                   ),
                   onChanged: (value) {
