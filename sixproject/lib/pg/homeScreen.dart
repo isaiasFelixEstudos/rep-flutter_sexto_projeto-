@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,6 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       return 'Campo preenchido';
     }
+  }
+
+  Future<void> logarBase() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailvalido.text, password: _senhavalida.text);
+    Navigator.of(context).pushNamed("/logado");
   }
 
   @override
@@ -97,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: logarBase,
                   child: Text('Login'),
                 ),
                 SizedBox(

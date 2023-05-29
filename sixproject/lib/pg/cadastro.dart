@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -17,6 +18,11 @@ class _CadastroState extends State<Cadastro> {
 
   void _validacaoFormulario() {
     _formkey.currentState?.validate();
+  }
+
+  Future<void> cadastrarBase() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailvalido.text, password: _senhavalida.text);
   }
 
   String _validarEntrada(String? mensagem) {
@@ -97,7 +103,7 @@ class _CadastroState extends State<Cadastro> {
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: cadastrarBase,
                   child: Text('Cadastrar'),
                 ),
               ],
